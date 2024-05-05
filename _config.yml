@@ -3,42 +3,43 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 照片集
-subtitle: Take Photo Think Seriously
-description: 拿起相机，认真思考
-cover: 'https://github.com/lfkdsk/picx-images-hosting/raw/master/20230817/IMG_7586.4e91my1ve140.17iz0sa56gik.webp'
-keywords: 
+title: Gallery
+subtitle: Means88's memory library
+description: Means88's memory library
+cover: 'https://cdn.jsdelivr.net/gh/Means88/picx-images-hosting@master/example/1.webp'
+keywords:
   - photography
   - photo
   - video
   - blog
-author: lfkdsk
+author: Means88
 language: zh-CN
-timezone: 
+timezone:
 
-footer_logo: 
+footer_logo:
   use: self
   self:
-    link: 'https://lfkdsk.github.io'
-    src: 'https://github.com/lfkdsk/picx-images-hosting/raw/master/20230817/tripper2white.2pbuwaqvndu0.webp'
+    link: 'https://means88.com/'
+    src: 'https://means88.com/static/media/avatar.2316da1abd928fe5f335.jpeg'
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://lfkdsk.github.io/album
-root: /album
+url: https://photo.means88.com/
+root: /
+
 permalink: :year/:abbrlink/
 permalink_defaults:
 # abbrlink config
 abbrlink:
   alg: crc16      #support crc16(default) and crc32
   rep: hex        #support dec(default) and hex
-  drafts: false   #(true)Process draft,(false)Do not process draft. false(default) 
+  drafts: false   #(true)Process draft,(false)Do not process draft. false(default)
   # Generate categories from directory-tree
   # depth: the max_depth of directory-tree you want to generate, should > 0
   auto_category:
      enable: true  #true(default)
      depth:        #3(default)
-     over_write: false 
+     over_write: false
   auto_title: false #enable auto title, it can auto fill the title by path
   auto_date: false #enable auto date, it can auto fill the date by time today
   force: false #enable force mode,in this mode, the plugin will ignore the cache, and calc the abbrlink for every post even it already had abbrlink.
@@ -118,7 +119,7 @@ encrypt: # hexo-blog-encrypt
   wrong_hash_message: 抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.
 
 lazyload:
-  enable: false 
+  enable: false
   onlypost: false
   loadingImg: /images/lazyload.jpg
 
@@ -233,7 +234,7 @@ markdown:
     - markdown-it-sub #~下标~
     - markdown-it-sup #^上标^
     ## 外部安装插件
-    - markdown-it-task-lists # - [ ] 
+    - markdown-it-task-lists # - [ ]
     - markdown-it-link-attributes
     - markdown-it-imsize #![test](image.png =100x200) #![test](image.png =100x) #![test](image.png =x200)
   anchors:
@@ -252,4 +253,4 @@ markdown:
 
 photography_page:
   slogan: true
-  slogan_descr: 'The moments when I pressed the shutter, the moments are forever.'
+  slogan_descr: 'さあ、旅に出よう、忘れないうちに'
