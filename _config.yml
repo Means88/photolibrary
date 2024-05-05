@@ -6,6 +6,8 @@
 title: Gallery
 subtitle: Means88's memory library
 description: Means88's memory library
+favicon: 'https://means88.com/favicon.ico'
+avatar: 'https://means88.com/static/media/avatar.2316da1abd928fe5f335.jpeg'
 cover: 'https://cdn.jsdelivr.net/gh/Means88/picx-images-hosting@master/example/1.webp'
 keywords:
   - photography
@@ -26,6 +28,17 @@ footer_logo:
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: https://photo.means88.com/
 root: /
+
+nav:
+  地图:
+    link: /location
+    icon: local-two
+  随机:
+    link: /random
+    icon: pic
+  时间线:
+    link: /grid-all
+    icon: grid-nine
 
 permalink: :year/:abbrlink/
 permalink_defaults:
@@ -66,6 +79,7 @@ post_asset_folder: false
 relative_link: false
 future: true
 highlight:
+  use: false
   enable: false
   line_number: false
   auto_detect: false
@@ -105,7 +119,6 @@ plugin:
   - hexo-generator-search
   - hexo-blog-encrypt
   - hexo-algoliasearch
-theme: hexo-theme-type
 
 # Security
 encrypt: # hexo-blog-encrypt
@@ -159,54 +172,6 @@ algolia:
     - permalink
     - date
 
-# feed:
-#   type: atom
-#   path: atom.xml
-#   limit: false
-#   hub:
-#   content: false
-#   content_limit: 140
-#   content_limit_delim: " "
-#   order_by: -date
-#   template: ./source/atom.xml
-
-# jsonContent:
-#   meta: true
-#   keywords: false # language name option
-#   dateFormat: undefined # format string
-#   pages:
-#     title: true
-#     slug: true
-#     date: true
-#     updated: true
-#     comments: false
-#     path: true
-#     link: true
-#     permalink: true
-#     excerpt: true
-#     keywords: true # but only if root keywords option language was set
-#     text: true
-#     raw: false
-#     content: false
-#     photos: true
-#   posts:
-#     title: true
-#     slug: true
-#     date: true
-#     updated: true
-#     comments: false
-#     path: true
-#     link: true
-#     permalink: true
-#     excerpt: true
-#     keywords: true # but only if root keywords option language was set
-#     text: true
-#     raw: false
-#     content: false
-#     categories: true
-#     tags: true
-#     photos: true
-
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
@@ -254,3 +219,16 @@ markdown:
 photography_page:
   slogan: true
   slogan_descr: 'さあ、旅に出よう、忘れないうちに'
+  travel_slogan: true
+  travel_slogan_descr: 'わたし今探しに行きたい'
+
+thumbnail_url: https://cdn.jsdelivr.net/gh/Means88/picx-images-hosting@thumbnail/
+base_url: https://cdn.jsdelivr.net/gh/Means88/picx-images-hosting@master
+backup_base_url: https://raw.githubusercontent.com/Means88/picx-images-hosting/master
+backup_thumbnail_url: https://raw.githubusercontent.com/Means88/picx-images-hosting/thumbnail
+
+theme: hexo-theme-type
+theme_config:
+  busuanzi: false
+  highlight:
+    use: false

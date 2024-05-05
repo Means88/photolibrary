@@ -29,19 +29,13 @@ if not os.path.exists("./gallery/"):
     raise "need git clone gallery first."
 
 # check config.
-if not os.path.exists("./gallery/CONFIG.yml") or not os.path.exists('./gallery/README.yml'):
-    raise "CONFIG or README is null."
+if not os.path.exists('./gallery/README.yml'):
+    raise "README is null."
 
 config = {}
 # re-generate config file.
-with open("./gallery/CONFIG.yml", 'r', encoding="utf-8") as g, open("./_config.yml", "r+", encoding="utf-8") as c, open("./new_config.yml", "w", encoding="utf-8") as n:
-    g_file, c_file = yaml.safe_load(g), yaml.safe_load(c)
-    for item in g_file:
-        print(item)
-        c_file[str(item)] = g_file[item]
-        config[str(item)] = g_file[item]
-    print(list(c_file))        
-    yaml.safe_dump(c_file, n, allow_unicode=True)
+with open("./_config.yml", "r+", encoding="utf-8") as template_config:
+    config = yaml.safe_load(template_config)
 
 thumbnail_url = config["thumbnail_url"]
 base_url = config["base_url"]
@@ -49,24 +43,23 @@ thumbnail_size = config.get("thumbnail_size", 1000)
 if not base_url or not base_url:
     raise "need set base url in github CONFIG.yml ."
 
-with open("./gallery/README.yml", 'r') as f:
-    y = yaml.safe_load(f)
+with open("./gallery/README.yml", 'r') as readme_yml:
+    readme_config = yaml.safe_load(readme_yml)
 
-if not y:
+if not readme_config:
     raise "could not found README.yml"
 
 # overwrite _config theme.
 shutil.copyfile('./gallery/README.yml', './source/_data/album.yml')
 
 index = 0
-# anlaysis summary 
+# anlaysis summary
 all_files = {}
 all_locations = {}
 
-for d in y:
-    title = d
-    print(title)
-    element = y[d]
+for album_name in readme_config:
+    title = album_name
+    element = readme_config[album_name]
     cover = element['cover']
     url = element['url']
     hidden = element.get('hidden', False)
@@ -81,8 +74,8 @@ for d in y:
     text = ''
 
     if os.path.exists(f"./gallery/{url}/index.md"):
-        f = open(index_md, 'r')
-        for l in f.readlines():
+        readme_yml = open(index_md, 'r')
+        for l in readme_yml.readlines():
             text += l
     photos = ''
     index_yml_name = f"./gallery/{url}/index.yml"
@@ -159,8 +152,8 @@ for d in y:
                 continue # cannot found thumtail.
             video = f'{base_url}/{url}/{video}'
             img_url, video = video, img_url
-        
-        # get gps location. 
+
+        # get gps location.
         loc = read_gps(f'./gallery/{url}/{i}')
         result = {
             'path': f'{url}/{i}',
@@ -192,7 +185,7 @@ for d in y:
             all_locations[img_key] = all_files[img_key]
 
         p = f'''
-- name: {name} 
+- name: {name}
   video: {video}
   share: {url}/{i}
   thum: {img_thumbnail_url}
@@ -214,7 +207,7 @@ url: {url}
 style: {style}
 location: {location}
 subtitle: {subtitle}
-rss: 
+rss:
 {rss_text}
 photos:
 {photos}
@@ -225,15 +218,15 @@ photos:
     print(f'generate md file for source/gallery/vol{index}.md')
     index += 1
 
-with open(f"./{public}/photos.json", 'w', encoding="utf-8") as f:
+with open(f"./{public}/photos.json", 'w', encoding="utf-8") as readme_yml:
     print(f'generate photos.json with {len(all_files)} items.')
-    json.dump(all_files, f, ensure_ascii=False)
+    json.dump(all_files, readme_yml, ensure_ascii=False)
 
-with open("./source/_data/photos.yml", "w", encoding="utf-8") as f:
-    yaml.safe_dump(all_files, f, allow_unicode=True)
+with open("./source/_data/photos.yml", "w", encoding="utf-8") as readme_yml:
+    yaml.safe_dump(all_files, readme_yml, allow_unicode=True)
 
-with open("./source/_data/location.yml", "w", encoding="utf-8") as f:
-    yaml.safe_dump(all_locations, f, allow_unicode=True)
+with open("./source/_data/location.yml", "w", encoding="utf-8") as readme_yml:
+    yaml.safe_dump(all_locations, readme_yml, allow_unicode=True)
 
 db.close()
 

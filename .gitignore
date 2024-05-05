@@ -19,3 +19,4 @@ source/_data/location.yml
 source/_data/photos.yml
 *.db
 __pycache__/
+gallery/
