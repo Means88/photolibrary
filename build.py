@@ -115,7 +115,7 @@ for album_name in readme_config:
                   exif_data[tag] = pure_exif_data[tag] = str(tags[tag])
                   continue
               elif tag == 'EXIF FocalLength':
-                  cur = str(eval(str(tags[tag])))
+                  cur = str(round(eval(str(tags[tag])), 1))
                   pro = 'mm'
               elif tag == 'Image Make':
                   cur = str(tags[tag])
